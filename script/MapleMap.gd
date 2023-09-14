@@ -11,7 +11,7 @@ func _init():
 func _ready():
 	#ProjectSettings.load_resource_pack("src/pck.json")
 	#add_child(WzHttp);
-	await emit_signal("Start_LoadMap","000040000")
+	await emit_signal("Start_LoadMap","000010000")
 	uiWindows=get_node("UIWindows")
 	#251000000 001000001 101000000
 
