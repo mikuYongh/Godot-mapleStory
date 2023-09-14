@@ -17,6 +17,4 @@ https://github.com/DevenWen/maplestory_in_godot
 提取码：bus1 
 解压至目录即可
 
-截图:
-![}9G70US6CA}3%IXLTEFZM}5](https://github.com/mikuYongh/Godot-mapleStory/assets/42311029/9ee188b1-4abf-435f-b574-b427e6f16a95)
-
+截图:![](https://raw.githubusercontent.com/mikuYongh/Godot-mapleStory/main/screenshot.png)
