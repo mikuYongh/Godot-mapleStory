@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwhg8mdne565n"]
+
+[ext_resource type="Script" path="res://script/Notice.gd" id="1_auiln"]
+
+[node name="Notice" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_auiln")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 23.0
+color = Color(0, 0, 0, 0.580392)
+
+[node name="label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 19.0
+text = "欢迎来到永恒冒险岛单机版,此版本未在网上兜售且禁止倒卖，非常感谢你的游玩"
+vertical_alignment = 1

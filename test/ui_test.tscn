@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://vi7ki0dlljyq"]
+
+[ext_resource type="Script" path="res://script/Ui/Login.gd" id="1_jnpgl"]
+[ext_resource type="Script" path="res://script/mapleWz.gd" id="2_sx6jg"]
+[ext_resource type="Script" path="res://script/Map.gd" id="3_owpj6"]
+[ext_resource type="Script" path="res://script/Background.gd" id="4_oo3pw"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jnpgl")
+
+[node name="WzTool" type="Node" parent="."]
+script = ExtResource("2_sx6jg")
+
+[node name="map" type="Node2D" parent="."]
+script = ExtResource("3_owpj6")
+
+[node name="background" type="Node2D" parent="map"]
+script = ExtResource("4_oo3pw")
+
+[node name="StaticBackground" type="ParallaxBackground" parent="map/background"]
+
+[node name="TILED" type="ParallaxLayer" parent="map/background/StaticBackground"]
+
+[node name="VMOVE" type="ParallaxLayer" parent="map/background/StaticBackground"]
+
+[node name="HTILED" type="ParallaxLayer" parent="map/background/StaticBackground"]
+visibility_layer = 3
+
+[node name="HMOVE" type="ParallaxLayer" parent="map/background/StaticBackground"]
+
+[node name="NORMAL" type="ParallaxLayer" parent="map/background/StaticBackground"]
+
+[node name="ANIM" type="ParallaxLayer" parent="map/background/StaticBackground"]
+
+[node name="ScrollBackground" type="ParallaxBackground" parent="map/background"]
+
+[node name="Camera2D" type="Camera2D" parent="map"]
+anchor_mode = 0
+ignore_rotation = false
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+
+[connection signal="loadBackground" from="map" to="map/background" method="_on_map_load_background"]

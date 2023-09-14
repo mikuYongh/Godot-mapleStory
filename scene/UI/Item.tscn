@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://craq2he2lthdh"]
+
+[ext_resource type="Script" path="res://script/Ui/Item.gd" id="1_cel3q"]
+[ext_resource type="Script" path="res://script/View/MapleGridView.gd" id="2_if6qk"]
+
+[node name="Item" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cel3q")
+path = "UIWindow.img/Item"
+
+[node name="MapleGridView" type="ScrollContainer" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 50.0
+offset_right = 16.0
+offset_bottom = 50.0
+vertical_scroll_mode = 2
+script = ExtResource("2_if6qk")
+width = 200
+heigh = 300
+type = "Item"
+canDrap = true

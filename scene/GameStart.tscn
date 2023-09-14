@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxiuuwghrogee"]
+
+[ext_resource type="Script" path="res://script/GameStart.gd" id="1_mbckr"]
+[ext_resource type="Texture2D" uid="uid://cu8r82km64d1h" path="res://fm.jpg" id="2_jw50b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5ond"]
+bg_color = Color(0.894118, 0.588235, 0.411765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wi40h"]
+
+[sub_resource type="Theme" id="Theme_kln8g"]
+ProgressBar/colors/font_shadow_color = Color(0, 0, 0, 1)
+ProgressBar/styles/background = SubResource("StyleBoxFlat_a5ond")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_wi40h")
+
+[node name="GameStart" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mbckr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 811.0
+offset_bottom = 592.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_jw50b")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 540.0
+offset_right = 762.0
+offset_bottom = 567.0
+theme = SubResource("Theme_kln8g")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://uo1qvbj1h554"]
+
+[ext_resource type="Script" path="res://script/HttpManager.gd" id="1"]
+
+[node name="HTTPMain2" type="CanvasLayer"]
+script = ExtResource("1")
+
+[node name="HTTPRequest2" type="HTTPRequest" parent="."]
+use_threads = true
+
+[node name="Label2" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 14.0

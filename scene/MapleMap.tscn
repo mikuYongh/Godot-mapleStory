@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://cifndx38hxwj1"]
+
+[ext_resource type="Script" path="res://script/MapleMap.gd" id="1"]
+[ext_resource type="Script" path="res://script/Map.gd" id="2"]
+[ext_resource type="Script" path="res://script/Camera2D.gd" id="2_gdl5y"]
+[ext_resource type="PackedScene" uid="uid://uo1qvbj1h554" path="res://scene/HttpManager.tscn" id="4_awi5m"]
+[ext_resource type="Script" path="res://script/Background.gd" id="5_oum8x"]
+[ext_resource type="PackedScene" uid="uid://bi8dyiquhp6gi" path="res://scene/player.tscn" id="6_n2415"]
+[ext_resource type="Script" path="res://script/mapleWz.gd" id="8_sog6w"]
+[ext_resource type="PackedScene" uid="uid://dwhg8mdne565n" path="res://scene/UI/Notice.tscn" id="10_3b1sv"]
+[ext_resource type="Script" path="res://script/View/BaseMenu.gd" id="10_425j4"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_forke"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1")
+
+[node name="HTTPMain" parent="." instance=ExtResource("4_awi5m")]
+visible = false
+
+[node name="HTTPTool" type="HTTPRequest" parent="HTTPMain"]
+timeout = 10.0
+
+[node name="Label" type="Label" parent="HTTPMain"]
+offset_right = 40.0
+offset_bottom = 14.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 600.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+vrs_texture = SubResource("ViewportTexture_forke")
+size = Vector2i(800, 600)
+render_target_update_mode = 4
+
+[node name="map" type="Node2D" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("2")
+
+[node name="background" type="Node2D" parent="SubViewportContainer/SubViewport/map"]
+script = ExtResource("5_oum8x")
+
+[node name="players" type="CanvasLayer" parent="SubViewportContainer/SubViewport"]
+layer = 10
+follow_viewport_enabled = true
+
+[node name="Player" parent="SubViewportContainer/SubViewport/players" instance=ExtResource("6_n2415")]
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/players/Player"]
+limit_left = -10000
+limit_top = -10000
+limit_right = 10000
+limit_bottom = 10000
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("2_gdl5y")
+
+[node name="WzTool" type="Node" parent="."]
+script = ExtResource("8_sog6w")
+
+[node name="BaseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("10_425j4")
+
+[node name="Notice" parent="." instance=ExtResource("10_3b1sv")]
+layout_mode = 1
+
+[node name="UIWindows" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="Start_LoadMap" from="." to="SubViewportContainer/SubViewport/map" method="_on_main_Start_LoadMap"]
+[connection signal="loadBackground" from="SubViewportContainer/SubViewport/map" to="SubViewportContainer/SubViewport/map/background" method="_on_map_load_background"]

@@ -1,0 +1,146 @@
+[gd_scene load_steps=15 format=3 uid="uid://bi8dyiquhp6gi"]
+
+[ext_resource type="Script" path="res://script/Player.gd" id="1_64l05"]
+[ext_resource type="Script" path="res://script/Body.gd" id="2_n6vlk"]
+[ext_resource type="Script" path="res://script/Face.gd" id="3_3lehe"]
+[ext_resource type="Script" path="res://script/Player/PlayerControl.gd" id="3_158h0"]
+[ext_resource type="Script" path="res://script/Head.gd" id="3_875og"]
+[ext_resource type="Script" path="res://script/Hair.gd" id="4_wylno"]
+[ext_resource type="Script" path="res://script/Cap.gd" id="5_43jph"]
+[ext_resource type="Script" path="res://script/Player/CharactorAnimation.gd" id="8_j13mk"]
+[ext_resource type="Script" path="res://script/FaceAnimation.gd" id="9_fri4q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k5jf8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_og4t2"]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_l84ic"]
+length = 5.0
+slide_on_slope = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la0yh"]
+size = Vector2(40, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtp4t"]
+size = Vector2(10, 3)
+
+[node name="Player" type="Node2D"]
+position = Vector2(7, 0)
+script = ExtResource("1_64l05")
+isMainPlayer = true
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k5jf8")
+script = ExtResource("8_j13mk")
+
+[node name="RigidBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 512
+collision_mask = 7168
+slide_on_ceiling = false
+floor_constant_speed = true
+floor_max_angle = 3.14159
+floor_snap_length = 32.0
+platform_on_leave = 2
+platform_floor_layers = 4278191104
+script = ExtResource("3_158h0")
+
+[node name="Marker2D" type="Marker2D" parent="RigidBody2D"]
+
+[node name="Body" type="Container" parent="RigidBody2D/Marker2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_n6vlk")
+img = "00002000.img"
+
+[node name="Head" type="Container" parent="RigidBody2D/Marker2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_875og")
+
+[node name="Hair" type="Container" parent="RigidBody2D/Marker2D/Head"]
+layout_mode = 2
+script = ExtResource("4_wylno")
+img = "Hair/00030054.img"
+
+[node name="Cap" type="Container" parent="RigidBody2D/Marker2D/Head/Hair"]
+layout_mode = 2
+script = ExtResource("5_43jph")
+img = "Cap/01001023.img"
+
+[node name="Face" type="Container" parent="RigidBody2D/Marker2D/Head"]
+layout_mode = 2
+script = ExtResource("3_3lehe")
+img = "Face/00020000.img"
+
+[node name="BlinkTimer" type="Timer" parent="RigidBody2D/Marker2D/Head/Face"]
+autostart = true
+
+[node name="FaceAnimation" type="AnimatedSprite2D" parent="RigidBody2D/Marker2D/Head/Face"]
+sprite_frames = SubResource("SpriteFrames_og4t2")
+script = ExtResource("9_fri4q")
+
+[node name="Coat" type="Container" parent="RigidBody2D/Marker2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_n6vlk")
+img = "Coat/01040078.img"
+
+[node name="Pants" type="Container" parent="RigidBody2D/Marker2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_n6vlk")
+img = "Pants/01062041.img"
+
+[node name="Shoes" type="Container" parent="RigidBody2D/Marker2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_n6vlk")
+img = "Shoes/01072324.img"
+
+[node name="Glove" type="Container" parent="RigidBody2D/Marker2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_n6vlk")
+img = "Glove/01082041.img"
+
+[node name="Weapon" type="Container" parent="RigidBody2D/Marker2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_n6vlk")
+img = "Weapon/01302006.img"
+
+[node name="Shield" type="Container" parent="RigidBody2D/Marker2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_n6vlk")
+img = "Shield/01092044.img"
+
+[node name="Cape" type="Container" parent="RigidBody2D/Marker2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_n6vlk")
+img = "Cape/01102019.img"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, -5)
+shape = SubResource("SeparationRayShape2D_l84ic")
+
+[node name="All" type="Area2D" parent="RigidBody2D"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/All"]
+position = Vector2(5, -35)
+shape = SubResource("RectangleShape2D_la0yh")
+
+[node name="Bottom" type="Area2D" parent="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Bottom"]
+shape = SubResource("RectangleShape2D_vtp4t")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[connection signal="frame_changed" from="Animation" to="." method="_on_charactor_animation_frame_changed"]
+[connection signal="timeout" from="RigidBody2D/Marker2D/Head/Face/BlinkTimer" to="RigidBody2D/Marker2D/Head/Face" method="_on_blink_timer_timeout"]
+[connection signal="animation_changed" from="RigidBody2D/Marker2D/Head/Face/FaceAnimation" to="RigidBody2D/Marker2D/Head/Face" method="_on_face_animation_animation_changed"]
+[connection signal="animation_looped" from="RigidBody2D/Marker2D/Head/Face/FaceAnimation" to="RigidBody2D/Marker2D/Head/Face" method="_on_face_animation_animation_looped"]
+[connection signal="frame_changed" from="RigidBody2D/Marker2D/Head/Face/FaceAnimation" to="RigidBody2D/Marker2D/Head/Face" method="_on_face_animation_frame_changed"]
+[connection signal="body_shape_entered" from="RigidBody2D/All" to="RigidBody2D" method="_on_area_2d_body_shape_entered"]

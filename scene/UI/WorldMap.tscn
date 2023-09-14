@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn87t81nujyoc"]
+
+[ext_resource type="Script" path="res://script/Ui/WorldMap.gd" id="1_15lft"]
+
+[node name="WorldMap" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_15lft")
+path = "UIWindow.img/WorldMap"
+
+[node name="map" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 34.0
+offset_right = 48.0
+offset_bottom = 74.0

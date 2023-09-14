@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds14v5o4pjnlq"]
+
+[ext_resource type="Script" path="res://script/Tool/MapLoad.gd" id="1_fydeb"]
+
+[node name="MapLoad" type="Node2D"]
+script = ExtResource("1_fydeb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_as_relative = false
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)

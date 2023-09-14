@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbumcthlon5jx"]
+
+[ext_resource type="Texture2D" uid="uid://cxthx5g4mma41" path="res://1.jpg" id="1_qpryq"]
+[ext_resource type="Texture2D" uid="uid://cu8r82km64d1h" path="res://fm.jpg" id="2_gke7l"]
+
+[node name="layer_test" type="Node2D"]
+
+[node name="map" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="map"]
+
+[node name="Sprite2D" type="Sprite2D" parent="map/CanvasLayer"]
+texture = ExtResource("1_qpryq")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="map"]
+layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="map/CanvasLayer2"]
+z_index = 10
+texture = ExtResource("2_gke7l")
+
+[node name="Label" type="Label" parent="map"]
+offset_left = 618.0
+offset_top = 62.0
+offset_right = 626.0
+offset_bottom = 265.0
+text = "回家好好好好好好好好哈哈哈哈哈哈哈哈哈哈哈哈"
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[node name="title" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="title"]
+layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="title/CanvasLayer"]
+z_index = 10
+position = Vector2(960, 155)
+texture = ExtResource("1_qpryq")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="title"]
+layer = 2

@@ -1,0 +1,7 @@
+# Godot 4+ specific ignores
+.godot/
+android/
+wz_client/
+.vscode/
+.import/
+build/
