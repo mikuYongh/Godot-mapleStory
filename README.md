@@ -13,8 +13,8 @@ https://github.com/DevenWen/maplestory_in_godot
 使用其wz和人物逻辑
 
 资源:
-链接：https://pan.baidu.com/s/1x_FAobOkikPWk3VCKNvPvA 
-提取码：bus1 
+链接：https://pan.baidu.com/s/1xcho8N7YDmDaFYnV_cIU9Q 
+提取码：jrh1 
 解压至目录即可
 
 截图:![](https://raw.githubusercontent.com/mikuYongh/Godot-mapleStory/main/screenshot.png)
